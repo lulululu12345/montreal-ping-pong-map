@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+// import { useState } from 'react'
+import { useLoadScript } from '@react-google-maps/api'
 import Map from './components/Map'
 import './App.css';
 
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <h2>Montreal Ping Pong Map</h2>
-      <Map/>
+      <Map />
     </div>
   )
 }
