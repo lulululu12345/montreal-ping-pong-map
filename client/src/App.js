@@ -6,7 +6,8 @@ import './App.css';
 
 function App() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDhzpBCgy9vMfzQLCo5MtxtkgkWt-6-TRs'
+    googleMapsApiKey: 'AIzaSyDhzpBCgy9vMfzQLCo5MtxtkgkWt-6-TRs',
+    mapIds: ['d36d858f2192af61']
   })
 
   if (!isLoaded) return <div>Loading...</div>
