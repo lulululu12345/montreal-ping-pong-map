@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useState } from 'react'
-import { GoogleMap, Marker } from '@react-google-maps/api'
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
+import TableMarker from './TableMarker'
 
 const styles = require('./MapStyles.json')
 
@@ -25,17 +26,44 @@ const Map = () => {
       _id: Math.floor(Math.random() * Date.now())
     }
   ]
+
   // Map the tableMarkers(dummy data) array on render
   useEffect(() => {
     setTables(tableMarkers.map((table) => {
-      return (<Marker
-        key={table._id}
-        title={'Table'}
-        position={table.location}
-        />)
-      })
+      return (
+        <TableMarker 
+          key={table._id}
+          title={'Ping Pong Table'}
+          markerPosition={table.location}
+          infoPosition={table.location}
+          numberOfTables={table.numberOfTables} 
+        />
+      )
+    })
     )
   }, [])
+
+  // useEffect(() => {
+  //   setTables(tableMarkers.map((table) => {
+  //     return (
+  //       <Marker
+  //         key={table._id}
+  //         title={'Table'}
+  //         position={table.location}
+  //         onClick={clickMarker}
+  //       >
+  //         <InfoWindow 
+  //           position={table.location}
+  //         >
+  //           <div>
+  //           <h2>hiLO</h2>
+  //           </div>
+  //         </InfoWindow>
+  //       </Marker>
+  //     )
+  //   })
+  //   )
+  // }, [])
 
   return (
     <GoogleMap 
