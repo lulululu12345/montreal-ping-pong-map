@@ -34,36 +34,13 @@ const Map = () => {
         <TableMarker 
           key={table._id}
           title={'Ping Pong Table'}
-          markerPosition={table.location}
-          infoPosition={table.location}
+          position={table.location}
           numberOfTables={table.numberOfTables} 
         />
       )
     })
     )
   }, [])
-
-  // useEffect(() => {
-  //   setTables(tableMarkers.map((table) => {
-  //     return (
-  //       <Marker
-  //         key={table._id}
-  //         title={'Table'}
-  //         position={table.location}
-  //         onClick={clickMarker}
-  //       >
-  //         <InfoWindow 
-  //           position={table.location}
-  //         >
-  //           <div>
-  //           <h2>hiLO</h2>
-  //           </div>
-  //         </InfoWindow>
-  //       </Marker>
-  //     )
-  //   })
-  //   )
-  // }, [])
 
   return (
     <GoogleMap 

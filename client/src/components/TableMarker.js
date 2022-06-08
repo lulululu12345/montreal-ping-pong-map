@@ -1,7 +1,7 @@
 import React from 'react'
 import { Marker, InfoWindow } from '@react-google-maps/api'
 
-const TableMarker = ({ key, title, markerPosition, infoPosition, numberOfTables }) => {
+const TableMarker = ({ key, title, position, numberOfTables }) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const clickMarker = () => {
@@ -12,19 +12,15 @@ const TableMarker = ({ key, title, markerPosition, infoPosition, numberOfTables 
       <Marker
         key={key}
         title={title}
-        position={markerPosition}
+        position={position}
         onClick={clickMarker}
       >
-        {isOpen &&
-          <InfoWindow 
-            position={infoPosition}
-          >
-            <div className='info-window'>
-              <h2>{title}</h2>
-              <p>{`Number of Tables: ${numberOfTables}`}</p>
-            </div>
-          </InfoWindow>
-        }
+        {isOpen && <InfoWindow position={position}>
+          <div className='info-window'>
+            <h2>{title}</h2>
+            <p>{`Number of Tables: ${numberOfTables}`}</p>
+          </div>
+        </InfoWindow>}
       </Marker>
     </>
   )
