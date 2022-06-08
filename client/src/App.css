@@ -34,3 +34,11 @@ body {
 .info-window {
   border: 1px solid black
 }
+
+.popup {
+  position: fixed;
+  z-index: 10;
+  background-color: white;
+  padding: 2rem;
+  left: 30vw;
+}

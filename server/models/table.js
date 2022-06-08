@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const tableSchema = new mongoose.Schema({
-  location: {
+  position: {
     lat: Number,
     lng: Number
   },

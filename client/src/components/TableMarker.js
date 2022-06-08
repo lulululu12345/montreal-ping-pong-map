@@ -10,7 +10,6 @@ const TableMarker = ({ key, title, position, numberOfTables }) => {
   return (
     <>
       <Marker
-        key={key}
         title={title}
         position={position}
         onClick={clickMarker}
