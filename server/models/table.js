@@ -7,7 +7,8 @@ const tableSchema = new mongoose.Schema({
   },
   numberOfTables: Number,
   location: String,
-  windProtection: String,
+  payToPlay: String,
+  description: String,
   verified: Boolean
 })
 

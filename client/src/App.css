@@ -42,3 +42,7 @@ body {
   padding: 2rem;
   left: 30vw;
 }
+
+.form-textarea {
+  resize: none;
+}

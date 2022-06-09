@@ -17,7 +17,8 @@ tablesRouter.post('/', async (req, res) => {
     },
     numberOfTables: body.numberOfTables,
     location: body.location,
-    windProtection: body.windProtection,
+    payToPlay: body.payToPlay,
+    description: body.description,
     verified: body.verified
   })
 

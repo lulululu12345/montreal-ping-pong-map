@@ -3,8 +3,9 @@ import tableService from '../services/table'
 
 const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmation, setShowMapClickInfoWindow }) => {
   const [numberOfTables, setNumberOfTables] = React.useState('1')
-  const [location, setLocation] = React.useState('outdoorUncovered')
-  const [windProtection, setWindProtection] = React.useState('none')
+  const [location, setLocation] = React.useState('outdoor')
+  const [payToPlay, setPayToPlay] = React.useState('no')
+  const [description, setDescription] = React.useState('')
 
   const changeNumberOfTables = (event) => {
     setNumberOfTables(event.target.value)
@@ -14,8 +15,12 @@ const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmati
     setLocation(event.target.value)
   }
 
-  const changeWindProtection = (event) => {
-    setWindProtection(event.target.value)
+  const changePayToPlay = (event) => {
+    setPayToPlay(event.target.value)
+  }
+
+  const changeDescription = (event) => {
+    setDescription(event.target.value)
   }
 
   const submitForm = async (event) => {
@@ -25,7 +30,8 @@ const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmati
       position: position,
       numberOfTables: Number(numberOfTables),
       location: location,
-      windProtection: windProtection,
+      payToPlay: payToPlay,
+      description: description,
       verified: false
     }
 
@@ -48,18 +54,20 @@ const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmati
         <div>
           <label htmlFor='location'>Location</label>
           <select id='location' value={location} onChange={changeLocation} >
-            <option value='outdoorUncovered'>Outdoor - Uncovered</option>
-            <option value='outdoorCovered'>Outdoor - Covered</option>
+            <option value='outdoor'>Outdoor</option>
             <option value='indoor'>Indoor</option>
           </select>
         </div>
         <div>
-          <label htmlFor='windProtection'>Wind Protection</label>
-          <select id='windProtection' value={windProtection} onChange={changeWindProtection}>
-            <option value='none'>{`None`}</option>
-            <option value='some'>{`Some`}</option>
-            <option value='plenty'>{`Plenty`}</option>
+          <label htmlFor='payToPlay'>Pay to Play?</label>
+          <select id='payToPlay' value={payToPlay} onChange={changePayToPlay}>
+            <option value='no'>No</option>
+            <option value='yes'>Yes</option>
           </select>
+        </div>
+        <div>
+          <label htmlFor='description'>Table Description</label>
+          <textarea className='form-textarea' id='description' resize='none' value={description} onChange={changeDescription}></textarea>
         </div>
         <button type='submit'>Submit</button>
       </form>
