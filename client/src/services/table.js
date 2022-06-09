@@ -6,4 +6,8 @@ const add = async (newObject) => {
   return res
 }
 
-export default { add }
+const getAll = async () => {
+  const res = await axios.get(baseUrl)
+  return res
+}
+export default { add, getAll }

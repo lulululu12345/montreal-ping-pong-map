@@ -2,6 +2,7 @@ import { useMemo, useEffect, useState } from 'react'
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import TableMarker from './TableMarker'
 import AddTableForm from './AddTableForm'
+import tableService from '../services/table'
 
 const styles = require('./MapStyles.json')
 
@@ -18,23 +19,9 @@ const Map = () => {
   const [showAddTableForm, setShowAddTableForm] = useState(false)
   // State for confirming new table submission
   const [showNewTableConfirmation, setShowNewTableConfirmation] = useState(false)
-  // Memoize thet center lat and lng
+  // Memoize the center lat and lng
   const center = useMemo(() => ({ lat: 45.505998689496344, lng: -73.56691460541067 }), [])
-  // Dummy data for working with markers
-  const tableMarkers = [
-    {
-      location: { lat: 45.53494, lng: -73.55543 },
-      numberOfTables: 1,
-      description: '',
-      _id: Math.floor(Math.random() * Date.now())
-    },
-    {
-      location: { lat: 45.53328, lng: -73.55590 },
-      numberOfTables: 1,
-      description: '',
-      _id: Math.floor(Math.random() * Date.now())
-    }
-  ]
+
 
   const clickMap = (event) => {
     setLatLng({ lat: event.latLng.lat(), lng: event.latLng.lng()})
@@ -49,21 +36,28 @@ const Map = () => {
     setShowNewTableConfirmation(false)
   }
 
-  // Map the tableMarkers(dummy data) array on render
   useEffect(() => {
-    setTables(tableMarkers.map((table) => {
+    loadTables()
+  }, [])
+
+  const loadTables = async () => {
+    const tables = await tableService.getAll()
+    console.log('tables.data', tables.data)
+    // setTableMarkers(tables.data)
+
+    setTables(tables.data.map((table) => {
       return (
-        <div key={table._id}>
+        <div key={table.id}>
           <TableMarker 
             title={'Ping Pong Table'}
-            position={table.location}
+            position={table.position}
             numberOfTables={table.numberOfTables} 
           />
         </div>
       )
     })
     )
-  }, [])
+  }
 
   return (
     <GoogleMap 

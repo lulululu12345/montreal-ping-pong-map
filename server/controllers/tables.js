@@ -1,6 +1,12 @@
 const tablesRouter = require('express').Router()
 const Table = require('../models/table')
 
+tablesRouter.get('/', async (req, res) => {
+  const tables = await Table.find({ verified: true })
+  console.log('tables', tables)
+  res.json(tables)
+})
+
 tablesRouter.post('/', async (req, res) => {
   const body = req.body
 
