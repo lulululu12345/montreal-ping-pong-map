@@ -80,7 +80,7 @@ const Map = () => {
         <div>
           <h1>add table</h1>
           { showAddTableForm
-            ? <AddTableForm postion={latLng} setShowAddTableForm={setShowAddTableForm} setShowMapClickInfoWindow={setShowMapClickInfoWindow} setShowNewTableConfirmation={setShowNewTableConfirmation} />
+            ? <AddTableForm position={latLng} setShowAddTableForm={setShowAddTableForm} setShowMapClickInfoWindow={setShowMapClickInfoWindow} setShowNewTableConfirmation={setShowNewTableConfirmation} />
             : <button onClick={addTable}>Add Table</button>
           }
         </div>

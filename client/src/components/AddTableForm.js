@@ -25,7 +25,8 @@ const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmati
       position: position,
       numberOfTables: Number(numberOfTables),
       location: location,
-      windProtection: windProtection
+      windProtection: windProtection,
+      verified: false
     }
 
     const newTable = await tableService.add(newTableMarker)
