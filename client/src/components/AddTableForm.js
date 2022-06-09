@@ -1,4 +1,5 @@
 import React from 'react'
+import tableService from '../services/table'
 
 const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmation, setShowMapClickInfoWindow }) => {
   const [numberOfTables, setNumberOfTables] = React.useState('1')
@@ -17,7 +18,7 @@ const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmati
     setWindProtection(event.target.value)
   }
 
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault()
 
     const newTableMarker = {
@@ -26,6 +27,10 @@ const AddTableForm = ({ position, setShowAddTableForm, setShowNewTableConfirmati
       location: location,
       windProtection: windProtection
     }
+
+    const newTable = await tableService.add(newTableMarker)
+
+    console.log('newTable', newTable)
 
     setShowAddTableForm(false)
     setShowMapClickInfoWindow(false)
