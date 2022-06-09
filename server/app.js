@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const config = require('./utils/config')
 const middleware = require('./utils/middleware')
+const tablesRouter = require('./controllers/tables')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 
@@ -21,6 +22,8 @@ app.use(express.static('build'))
 
 app.use(express.json())
 app.use(middleware.requestLogger)
+
+app.use('/api/tables', tablesRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
