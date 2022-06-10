@@ -26,6 +26,18 @@ body {
   font-size: 1.2rem;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
 .map-container {
   width: 100%;
   height: 100%;
@@ -37,6 +49,10 @@ body {
   align-items: center;
 }
 
+.info-header {
+  margin: 0;
+}
+
 .popup {
   position: fixed;
   z-index: 10;
@@ -45,6 +61,56 @@ body {
   left: 30vw;
 }
 
+/* Buttons */
+.btn-addTable {
+  border: none;
+  background: none;
+  font-size: 2rem;
+  border-bottom: 1px solid black;
+}
+
+.btn-addTable:hover {
+  cursor: pointer;
+}
+
+.btn {
+  font-family: inherit;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+/* Forms */
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-heading {
+  margin: 0 0 1rem;
+}
+
+.form-input {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
+
 .form-textarea {
   resize: none;
+  align-self: stretch;
+  font-family: inherit;
+}
+
+#numberOfTables {
+  width: 3.5rem;
 }

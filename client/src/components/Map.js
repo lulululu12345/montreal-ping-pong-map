@@ -21,7 +21,7 @@ const Map = () => {
   const [showNewTableConfirmation, setShowNewTableConfirmation] = useState(false)
   // Memoize the center lat and lng
   const montreal = useMemo(() => ({ lat: 45.505998689496344, lng: -73.56691460541067 }), [])
-
+  // Map boundary
   const montrealBounds = {
     north: 45.78487,
     south: 45.33452,
@@ -33,6 +33,9 @@ const Map = () => {
   const clickMap = (event) => {
     setLatLng({ lat: event.latLng.lat(), lng: event.latLng.lng()})
     setShowMapClickInfoWindow(!showMapClickInfoWindow)
+    if (showAddTableForm) {
+      setShowAddTableForm(false)
+    }
   }
 
   const addTable = () => {
@@ -82,18 +85,13 @@ const Map = () => {
       center={montreal} 
       mapContainerClassName='map-container'
       onClick={clickMap}
-      // restriction={{
-      //   latLngBounds: montrealBounds,
-      //   strictBounds: false
-      // }}
     >
       {tables}
       {showMapClickInfoWindow && <InfoWindow position={latLng}>
         <div>
-          <h1>add table</h1>
-          { showAddTableForm
+          {showAddTableForm
             ? <AddTableForm position={latLng} setShowAddTableForm={setShowAddTableForm} setShowMapClickInfoWindow={setShowMapClickInfoWindow} setShowNewTableConfirmation={setShowNewTableConfirmation} />
-            : <button onClick={addTable}>Add Table</button>
+            : <button className='btn-addTable' onClick={addTable}>Add Table?</button>
           }
         </div>
       </InfoWindow>}

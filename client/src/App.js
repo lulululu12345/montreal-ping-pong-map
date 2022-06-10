@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Montreal Ping Pong Map</h2>
+      <h1>Montreal Ping Pong Map</h1>
       <Map />
     </div>
   )

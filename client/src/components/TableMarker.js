@@ -40,7 +40,7 @@ const TableMarker = ({ key, title, position, numberOfTables, location, payToPlay
       >
         {isOpen && <InfoWindow position={position}>
           <div className='info-window'>
-            <h2>{title}</h2>
+            <h2 className='info-header'>{title}</h2>
             {numberOfTables < 2
               ? <p>{`${numberOfTables} ${location} table`}</p>
               : <p>{`${numberOfTables} ${location} tables`}</p>
