@@ -1,5 +1,5 @@
 import { useMemo, useEffect, useState } from 'react'
-import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
+import { GoogleMap, InfoWindow } from '@react-google-maps/api'
 import TableMarker from './TableMarker'
 import AddTableForm from './AddTableForm'
 import tableService from '../services/table'
@@ -95,12 +95,11 @@ const Map = () => {
         </div>
       </InfoWindow>}
       {showNewTableConfirmation &&
-        <div className='popup'>
-          <h1>Thank you for adding a new table!</h1>
-          <h2>Your submission is currently under review</h2>
-          <button onClick={clickConfirmSubmission}>Got it</button>
-        </div>
-      }
+      <div className='popup'>
+        <h1 className='popup-heading'>Thank you for adding a new table!</h1>
+        <h2>Your submission is currently under review</h2>
+        <button onClick={clickConfirmSubmission}>Got it</button>
+      </div>}
     </GoogleMap>
   )
 }
