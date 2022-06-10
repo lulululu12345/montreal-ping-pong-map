@@ -20,7 +20,14 @@ const Map = () => {
   // State for confirming new table submission
   const [showNewTableConfirmation, setShowNewTableConfirmation] = useState(false)
   // Memoize the center lat and lng
-  const center = useMemo(() => ({ lat: 45.505998689496344, lng: -73.56691460541067 }), [])
+  const montreal = useMemo(() => ({ lat: 45.505998689496344, lng: -73.56691460541067 }), [])
+
+  const montrealBounds = {
+    north: 45.78487,
+    south: 45.33452,
+    west: -74.26209,
+    east: -73.06540
+  }
 
 
   const clickMap = (event) => {
@@ -42,7 +49,6 @@ const Map = () => {
 
   const loadTables = async () => {
     const tables = await tableService.getAll()
-    console.log('tables.data', tables.data)
     // setTableMarkers(tables.data)
 
     setTables(tables.data.map((table) => {
@@ -52,6 +58,10 @@ const Map = () => {
             title={'Ping Pong Table'}
             position={table.position}
             numberOfTables={table.numberOfTables} 
+            location={table.location}
+            payToPlay={table.payToPlay}
+            description={table.description}
+            verified={table.verified}
           />
         </div>
       )
@@ -62,12 +72,20 @@ const Map = () => {
   return (
     <GoogleMap 
       options={{
-        styles: styles
+        styles: styles,
+        restriction: {
+          latLngBounds: montrealBounds,
+          strictBounds: false
+        }
       }}
       zoom={11}  
-      center={center} 
+      center={montreal} 
       mapContainerClassName='map-container'
       onClick={clickMap}
+      // restriction={{
+      //   latLngBounds: montrealBounds,
+      //   strictBounds: false
+      // }}
     >
       {tables}
       {showMapClickInfoWindow && <InfoWindow position={latLng}>
