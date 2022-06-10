@@ -49,8 +49,9 @@ h3 {
   align-items: center;
 }
 
-.info-header {
-  margin: 0;
+.info-line {
+  margin: 0.5 0;
+  font-size: 2rem;
 }
 
 .popup {

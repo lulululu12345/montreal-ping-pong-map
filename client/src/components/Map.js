@@ -58,7 +58,6 @@ const Map = () => {
       return (
         <div key={table.id}>
           <TableMarker 
-            title={'Ping Pong Table'}
             position={table.position}
             numberOfTables={table.numberOfTables} 
             location={table.location}
