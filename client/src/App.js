@@ -7,8 +7,6 @@ function App() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_API_KEY,
     mapIds: [process.env.REACT_APP_MAP_ID]
-    // googleMapsApiKey: 'AIzaSyDhzpBCgy9vMfzQLCo5MtxtkgkWt-6-TRs',
-    // mapIds: ['d36d858f2192af61']
   })
 
   if (!isLoaded) return <div>Loading...</div>
